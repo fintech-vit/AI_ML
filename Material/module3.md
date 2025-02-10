@@ -13,8 +13,6 @@ Statistical Learning Theory provides the theoretical framework for understanding
 
 A practical example is selecting between a simple linear regression model and a deep neural network for predicting house prices. ERM might favor the deep network due to low training error, but SRM would consider the complexity and risk of overfitting.
 
-**Further Reading and Videos:**  
-- [Statistical Learning Theory - MIT OpenCourseWare](https://www.youtube.com/watch?v=UjyHfPRZzKE)
 
 ---
 
@@ -28,7 +26,7 @@ Convergence in machine learning refers to whether an algorithm’s performance s
 For example, a logistic regression classifier trained on a large dataset of customer purchase history will eventually converge to an optimal decision boundary. However, if the data is highly noisy, convergence might be slow or never fully achieved.
 
 **Further Reading and Videos:**  
-- [PAC Learnability - Foundations of ML](https://www.youtube.com/watch?v=0mEoXlhJxNY)
+- https://www.youtube.com/watch?v=vAOI9kTDVoo
 
 ---
 
@@ -46,9 +44,6 @@ where:
 ### Example:  
 - If \( P(x) \) represents the actual distribution of words in the English language and \( Q(x) \) is a model’s predicted distribution, a low KL divergence means the model closely follows natural language patterns.
 - In deep learning, KL divergence is used in Variational Autoencoders (VAEs) to regularize latent space representations.
-
-**Further Reading and Videos:**  
-- [KL Divergence Explained](https://www.youtube.com/watch?v=LnJbC5B49cU)
 
 ---
 
@@ -119,7 +114,5 @@ Examples:
 - **Generative Approach:** Using a Gaussian Mixture Model to model handwritten digits for a handwriting recognition task.
 - **Discriminative Approach:** Using logistic regression to classify spam emails based on words in the email.
 
-**Further Reading and Videos:**  
-- [Generative vs Discriminative Models](https://www.youtube.com/watch?v=4w9J4JZZn6A)
 
 ---
