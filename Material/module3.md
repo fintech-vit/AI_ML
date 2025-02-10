@@ -46,8 +46,8 @@ To prevent overfitting, we introduce **Structural Risk Minimization (SRM)**, whi
 ![alt text](image-3.png)
 
 Where:  
-- \( \Omega(f) \) is a measure of model complexity.  
-- \( \lambda \) is a hyperparameter that controls how much regularization is applied.  
+- Ω(f) is a measure of model complexity.  
+- λ is a hyperparameter that controls how much regularization is applied.  
 
 **Example:**  
 - In linear regression, **L2 regularization (Ridge Regression)** adds a penalty to the size of model coefficients, discouraging overly complex models.  
@@ -59,7 +59,7 @@ A good model **generalizes** well, meaning it performs well on **unseen** data, 
 
 - **Probably Approximately Correct (PAC) Learning:**  
   - A model is **PAC-learnable** if it can achieve a low error with high probability given **sufficient training data**.  
-  - If an algorithm can learn a function within **\( \epsilon \)-error with probability at least \( 1 - \delta \)**, then it is PAC-learnable.  
+  - If an algorithm can learn a function within **ϵ-error** with probability at least  **1 - δ**, then it is PAC-learnable.  
 
 **Example:**  
 - Suppose we train a classifier to distinguish between spam and non-spam emails. If the PAC learning framework holds, then with a **large enough** dataset, the classifier will be able to classify new emails accurately with high probability.  
