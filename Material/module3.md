@@ -45,6 +45,10 @@ where:
 - If \( P(x) \) represents the actual distribution of words in the English language and \( Q(x) \) is a model’s predicted distribution, a low KL divergence means the model closely follows natural language patterns.
 - In deep learning, KL divergence is used in Variational Autoencoders (VAEs) to regularize latent space representations.
 
+**Further Reading and Videos:**  
+- https://www.youtube.com/watch?v=SxGYPqCgJWM
+- https://www.youtube.com/watch?v=sjgZxuCm_8Q
+
 ---
 
 ## 4. Model Selection and Bias-Variance Tradeoff  
@@ -114,5 +118,7 @@ Examples:
 - **Generative Approach:** Using a Gaussian Mixture Model to model handwritten digits for a handwriting recognition task.
 - **Discriminative Approach:** Using logistic regression to classify spam emails based on words in the email.
 
+**Further Reading and Videos:**  
+- [Generative vs Discriminative Models](https://www.youtube.com/watch?v=4w9J4JZZn6A)
 
 ---
