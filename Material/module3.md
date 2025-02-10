@@ -109,6 +109,7 @@ A model is said to converge when:
 
 **Solution:**  
 - **Adaptive Learning Rates** (e.g., Adam, RMSprop) adjust the learning rate dynamically.  
+- https://www.youtube.com/watch?v=NE88eqLngkg&t=803s
 
 #### **2.3.2 Batch Size**  
 - **Large batch sizes** speed up training but can cause models to get stuck in sharp local minima.  
