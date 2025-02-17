@@ -251,6 +251,6 @@ Examples:
 - **Discriminative Approach:** Using logistic regression to classify spam emails based on words in the email.
 
 **Further Reading and Videos:**  
-- [Generative vs Discriminative Models](https://www.youtube.com/watch?v=4w9J4JZZn6A)
+- [Generative vs Discriminative Models](https://www.youtube.com/watch?v=ut3ehErPvHo)
 
 ---
