@@ -60,7 +60,7 @@ A **Feed-Forward Neural Network (FNN)** is the most basic form of artificial neu
 2. **Hidden Layers:** Each neuron applies a weighted sum and an activation function (such as **ReLU** or **Sigmoid**) to introduce non-linearity.  
 3. **Output Layer:** Generates predictions, such as class labels in classification tasks or numerical values in regression tasks.  
 
-### **Example:** [House Price Prediction]()
+### **Example:** [House Price Prediction](https://github.com/fintech-vit/AI_ML/blob/main/FNN-example.md)
 A Feed-Forward Neural Network can be trained to predict **house prices** based on input features like:  
 - **Square footage**  
 - **Number of bedrooms**  
