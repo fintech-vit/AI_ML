@@ -28,9 +28,8 @@ The perceptron is the simplest type of neural network, consisting of a **single-
 - The weighted sum of inputs is passed through an **activation function** to determine the output.  
 
 ### **Mathematical Representation:**  
-\[
-y = f\left( \sum w_i x_i + b \right)
-\]
+  ![alt text](image-4.png)
+
 where:  
 - \( w_i \) are the **weights** assigned to inputs,  
 - \( x_i \) are the **input values**,  
@@ -61,7 +60,7 @@ A **Feed-Forward Neural Network (FNN)** is the most basic form of artificial neu
 2. **Hidden Layers:** Each neuron applies a weighted sum and an activation function (such as **ReLU** or **Sigmoid**) to introduce non-linearity.  
 3. **Output Layer:** Generates predictions, such as class labels in classification tasks or numerical values in regression tasks.  
 
-### **Example:**  
+### **Example:** [House Price Prediction]()
 A Feed-Forward Neural Network can be trained to predict **house prices** based on input features like:  
 - **Square footage**  
 - **Number of bedrooms**  
