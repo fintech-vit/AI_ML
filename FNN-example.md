@@ -2,7 +2,8 @@
 
 ---
 
-# **Predicting House Prices with a Neural Network**  
+# **Predicting House Prices with a Neural Network** 
+[Colab File Link](https://colab.research.google.com/drive/1E1zTNnrhkUnF8D6M-yDFKeVsSL2s2e0c#scrollTo=-n3A0PPGfdSF)
 
 In this example, we will build a simple neural network to predict house prices based on:  
 - **Square Footage** (Size of the house)  
