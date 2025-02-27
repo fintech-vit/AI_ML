@@ -18,7 +18,7 @@ In machine learning, we want to minimize the **expected loss** or **risk** of ou
 
 Mathematically, the risk \( R(f) \) is defined as:  
 
-![alt text](image-1.png)
+![alt text](image.png)
 
 Where:  
 - \( (x, y) \sim P \) means the data is drawn from an unknown probability distribution \( P \).  
@@ -31,7 +31,7 @@ Since we **don't know the true data distribution \( P \)**, we approximate the r
 #### **1.2.2 Empirical Risk Minimization (ERM)**  
 In practice, since we cannot compute the exact expected risk, we minimize the **empirical risk** \( R_n(f) \), which is computed over the training dataset of \( n \) samples:  
 
-![alt text](image-2.png)
+![alt text](image-1.png)
 
 This means we **average the errors over the training set**. A model trained using ERM simply tries to minimize the training error. However, this can lead to **overfitting** if the model learns too much from the noise in the training data.  
 
@@ -43,7 +43,7 @@ This means we **average the errors over the training set**. A model trained usin
 #### **1.2.3 Structural Risk Minimization (SRM)**  
 To prevent overfitting, we introduce **Structural Risk Minimization (SRM)**, which adds a **regularization term** to control model complexity:  
 
-![alt text](image-3.png)
+![alt text](image-2.png)
 
 Where:  
 - Ω(f) is a measure of model complexity.  
