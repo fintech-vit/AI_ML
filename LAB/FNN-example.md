@@ -62,7 +62,15 @@ df = pd.DataFrame({'SquareFootage': square_footage, 'Bedrooms': bedrooms, 'Locat
 # Show first 5 rows
 print(df.head())
 ```
-
+#### Output
+```
+   SquareFootage  Bedrooms  LocationScore          Price
+0           1660         1              8  350996.115613
+1           4572         3              8  809035.979699
+2           3892         4              4  691384.067689
+3           1266         2              4  287769.933816
+4           4244         4              5  745471.171685
+```
 ---
 
 ## **Step 4: Prepare the Data**
@@ -108,6 +116,23 @@ model.compile(optimizer='adam', loss='mse')
 model.summary()
 ```
 
+#### Output
+```
+Model: "sequential"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ dense (Dense)                        │ (None, 10)                  │              40 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_1 (Dense)                      │ (None, 5)                   │              55 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dense_2 (Dense)                      │ (None, 1)                   │               6 │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 101 (404.00 B)
+ Trainable params: 101 (404.00 B)
+ Non-trainable params: 0 (0.00 B)
+ ```
+
 ---
 
 ## **Step 6: Train the Model**
@@ -118,6 +143,32 @@ We train the neural network for **200 epochs** (iterations).
 history = model.fit(X_train_scaled, y_train, epochs=200, validation_data=(X_test_scaled, y_test), verbose=1)
 ```
 
+#### Output
+```
+Epoch 1/200
+13/13 ━━━━━━━━━━━━━━━━━━━━ 3s 53ms/step - loss: 336426172416.0000 - val_loss: 345779306496.0000
+Epoch 2/200
+13/13 ━━━━━━━━━━━━━━━━━━━━ 0s 19ms/step - loss: 341174812672.0000 - val_loss: 345779208192.0000
+.
+.
+Epoch 50/200
+13/13 ━━━━━━━━━━━━━━━━━━━━ 0s 6ms/step - loss: 337491656704.0000 - val_loss: 345696141312.0000
+.
+.
+Epoch 100/200
+13/13 ━━━━━━━━━━━━━━━━━━━━ 0s 10ms/step - loss: 339421298688.0000 - val_loss: 345117294592.0000
+.
+.
+Epoch 150/200
+13/13 ━━━━━━━━━━━━━━━━━━━━ 0s 9ms/step - loss: 324313907200.0000 - val_loss: 343747198976.0000
+.
+.
+.
+Epoch 200/200
+13/13 ━━━━━━━━━━━━━━━━━━━━ 0s 8ms/step - loss: 329737338880.0000 - val_loss: 341451374592.0000
+
+# To see full detailed output run it in collab
+```
 ---
 
 ## **Step 7: Visualize Training Progress**
@@ -132,6 +183,8 @@ plt.legend()
 plt.title('Training Loss Over Time')
 plt.show()
 ```
+#### Output
+![alt text](image.png)
 
 ---
 
@@ -150,6 +203,9 @@ plt.title("Actual vs. Predicted Prices")
 plt.show()
 ```
 
+#### Output
+![alt text](image-1.png)
+
 ---
 
 ## **Step 9: Predict Price for a New House**
@@ -166,7 +222,11 @@ new_house_scaled = scaler.transform(new_house)
 predicted_price = model.predict(new_house_scaled)[0][0]
 print(f"Predicted Price: ${predicted_price:.2f}")
 ```
-
+#### Output
+```
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 38ms/step
+Predicted Price: $1565.07
+```
 ---
 
 ## **Conclusion**

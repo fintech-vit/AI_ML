@@ -28,7 +28,8 @@ The perceptron is the simplest type of neural network, consisting of a **single-
 - The weighted sum of inputs is passed through an **activation function** to determine the output.  
 
 ### **Mathematical Representation:**  
-  ![alt text](image-4.png)
+
+![alt text](image.png)
 
 where:  
 - \( w_i \) are the **weights** assigned to inputs,  
