@@ -1,5 +1,5 @@
 **Predictive Analytics for Stock Prices** using **Linear Regression**.  
-- https://colab.research.google.com/drive/1pzW6SoOo32dMImY7_i6yeWjJV1XLQgd1#scrollTo=VCqCUF5lDDxG
+- https://colab.research.google.com/drive/1pzW6SoOo32dMImY7_i6yeWjJV1XLQgd1?usp=sharing
 ---
 
 ## **Step 1: Import Necessary Libraries**
