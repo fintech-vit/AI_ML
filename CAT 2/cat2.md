@@ -1,4 +1,5 @@
 # CAT 2
+Module 3
 1. What is convergence in terms of machine learning 
 2. What is model selection, when to use which kinds of models 
 3. List any ten machine learning models and their use cases 
