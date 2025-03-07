@@ -1,5 +1,5 @@
 # CAT 2
-Module 3
+Module 4
 1. How does a neural network work . 
 2. Perceptron learning algorithm model.
 3. How does a Feed Forward Neural Network work . 
