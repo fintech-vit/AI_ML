@@ -1,0 +1,11 @@
+- perceptron learning algo , with usecases and code
+    - https://youtu.be/HPfZ9lEZOj4?si=6Cb9MzN3QIE4LeKt
+
+- convex and concave function , intuition
+    - how to find if a function is concave or convex
+        - A function \( f(x) \) is **convex** if its second derivative is **non-negative**:  
+        - A function \( g(x) \) is **concave** if its second derivative is **non-positive**:  
+        - https://youtu.be/4s0aNldT02Y?si=okolMvMTMiExqfIP
+    - why we talk about convex functions in ML
+- gradient descenct
+    - 
