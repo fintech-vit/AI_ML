@@ -1,279 +1,220 @@
-# **Customer Churn Prediction: A Step-by-Step Guide**  
+# **Understanding the Relationship Between Credit Limit and Average Purchase**
+- https://colab.research.google.com/drive/1PZQytSNf2r3DZiz5LCDg3_G1HODT9PS2?usp=sharing
 
-## **📌 Introduction**
-Customer churn is a major concern for businesses, especially in subscription-based models. In this guide, we will:
-✅ Load and explore customer data  
-✅ Analyze churn behavior using **data visualization**  
-✅ Train a **Machine Learning model** to predict churn  
-✅ Evaluate the model's performance  
+## **1. Introduction**
+In financial analysis, it is essential to understand how different factors influence customer spending behavior. One such relationship is between **credit limit** and **average purchase amount**. This study aims to determine whether customers with higher credit limits tend to spend more on average.
 
----
-
-## **📌 Step 1: Import Required Libraries**
-We start by importing essential Python libraries.
-
-```python
-import numpy as np  
-import pandas as pd  
-import matplotlib.pyplot as plt  
-import seaborn as sns  
-from sklearn.model_selection import train_test_split  
-from sklearn.preprocessing import StandardScaler, LabelEncoder  
-from sklearn.ensemble import RandomForestClassifier  
-from sklearn.metrics import classification_report, confusion_matrix, accuracy_score  
-```
-
-💡 **Why these libraries?**
-- **NumPy & Pandas** → Data manipulation  
-- **Matplotlib & Seaborn** → Data visualization  
-- **Scikit-learn (sklearn)** → Machine learning tools  
+## **2. Objective**
+The main objective of this analysis is to explore the relationship between a customer's **credit limit** and their **average purchase amount**. Specifically, we will:
+- Generate a dataset of **150 customers** with relevant financial attributes.
+- Create a **bivariate plot** (scatter plot) to visualize the relationship.
+- Compute the **correlation coefficient** to measure the strength of the relationship.
+- Classify customers based on their spending behavior.
+- Identify potential **outliers** that deviate significantly from expected spending patterns.
 
 ---
 
-## **📌 Step 2: Load and Explore the Dataset**
-We will use the **Telco Customer Churn dataset** from Kaggle.
+## **3. Understanding Key Terms**
+### **3.1. Bivariate Analysis and Bivariate Plot**
+- **Bivariate analysis** refers to the statistical analysis of two variables to determine the relationship between them.
+- A **bivariate plot** is a graphical representation of the relationship between two numerical variables. In this case, we use a **scatter plot** to show how credit limit and average purchase amount are related.
 
-```python
-# Load dataset
-df = pd.read_csv("customer_churn.csv")
+### **3.2. Correlation**
+- **Correlation** measures the degree to which two variables move in relation to each other.
+- The **Pearson correlation coefficient (r)** is a commonly used measure:
+  - `r > 0`: Positive correlation (when one variable increases, the other also increases).
+  - `r < 0`: Negative correlation (when one variable increases, the other decreases).
+  - `r = 0`: No correlation (the variables do not affect each other).
+- A strong correlation (closer to **1 or -1**) suggests a strong relationship, whereas a weak correlation (closer to **0**) suggests little or no relationship.
 
-# Display first 5 rows
-print(df.head())
-```
-
-### **Dataset Overview**
-The dataset contains customer details like:
-- `gender`, `SeniorCitizen`, `Partner`, `Dependents` → Demographics  
-- `tenure`, `MonthlyCharges`, `TotalCharges` → Account details  
-- `Contract`, `PaymentMethod` → Subscription details  
-- `Churn` → **Target variable** (Yes = Customer left, No = Customer stayed)  
+### **3.3. Outliers**
+- **Outliers** are extreme values that deviate significantly from the overall pattern of the data. Identifying outliers helps in understanding unusual spending behavior.
 
 ---
 
-## **📌 Step 3: Check for Missing Values**
-```python
-# Check missing values
-print(df.isnull().sum())
-```
+## **4. Approach**
+We follow a structured approach to analyze the relationship:
 
-💡 **Handling Missing Data**:
-If any missing values exist, we fill them:
-```python
-df.fillna(df.mean(), inplace=True)
-```
+### **Step 1: Generate Synthetic Data**
+Since we do not have real customer data, we generate a dataset containing 150 customers with randomly assigned financial attributes:
+- **Customer_ID**: A unique identifier for each customer.
+- **Credit_Limit**: The maximum amount a customer can spend using their credit card.
+- **Average_Purchase**: The average amount the customer spends per transaction.
+- **Income**: A feature to analyze spending behavior based on earnings.
+
+### **Step 2: Save Data to CSV**
+The dataset is saved as `customer_credit_data.csv` for further analysis.
+
+### **Step 3: Create a Bivariate Scatter Plot**
+A **scatter plot** is created to visualize the relationship between **credit limit** and **average purchase amount**. A **trendline** is added to observe the general pattern.
+
+### **Step 4: Compute Correlation**
+We calculate the **correlation coefficient** between credit limit and average purchase to measure the strength of their relationship.
+
+### **Step 5: Categorize Customers Based on Spending Behavior**
+Customers are divided into three categories:
+- **Low Spenders** (lower one-third of average purchases).
+- **Medium Spenders** (middle one-third of average purchases).
+- **High Spenders** (upper one-third of average purchases).
+
+### **Step 6: Outlier Detection**
+A **boxplot** is used to detect any customers whose spending deviates significantly from the average.
+
+### **Step 7: Multi-Feature Analysis**
+A **pairplot** is created to visualize interactions among multiple financial attributes.
 
 ---
 
-## **📌 Step 4: Data Visualization**
-### **1️⃣ Churn Distribution**
+## **5. Step-by-Step Implementation**
+Below is the complete Python code implementing the approach:
+
+### **Step 1: Generate the Dataset**
 ```python
-plt.figure(figsize=(6,4))
-sns.countplot(x=df["Churn"], palette="coolwarm")
-plt.title("Customer Churn Distribution")
+import pandas as pd
+import numpy as np
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Number of customers
+num_customers = 150
+
+# Generate synthetic data
+data = {
+    "Customer_ID": range(1, num_customers + 1),
+    "Credit_Limit": np.random.randint(5000, 50000, num_customers),  # Random limits between $5,000 and $50,000
+    "Average_Purchase": np.random.randint(500, 5000, num_customers),  # Random spending between $500 and $5,000
+    "Income": np.random.randint(20000, 150000, num_customers)  # Random income levels between $20,000 and $150,000
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Save to CSV
+df.to_csv("customer_credit_data.csv", index=False)
+
+# Display first few rows
+df.head()
+```
+```
+Output:
+   	Customer_ID	Credit_Limit	Average_Purchase	Income
+0	1	            20795	            4127	     26102
+1	2	            5860	            1863	     70336
+2	3	            43158	            2481	     138015
+3	4	            49732	            2163	     105314
+4	5	            16284	            2029	     143007
+```
+---
+
+### **Step 2: Create a Bivariate Scatter Plot**
+```python
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# Set plot style
+sns.set(style="whitegrid")
+
+# Create scatter plot
+plt.figure(figsize=(8, 6))
+sns.regplot(x="Credit_Limit", y="Average_Purchase", data=df, scatter_kws={'alpha': 0.5}, line_kws={'color': 'red'})
+
+# Labels and title
+plt.xlabel("Credit Limit ($)")
+plt.ylabel("Average Purchase ($)")
+plt.title("Bivariate Analysis: Credit Limit vs. Average Purchase")
+
+# Show plot
 plt.show()
 ```
+![alt text](image.png)
+---
 
-💡 **Interpretation**:
-- We check if churn is **balanced or imbalanced**.  
-- If the dataset is highly imbalanced, we will use **SMOTE** later.  
+### **Step 3: Compute Correlation**
+```python
+# Compute Pearson correlation coefficient
+correlation = df["Credit_Limit"].corr(df["Average_Purchase"])
+
+# Print correlation result
+print(f"Correlation between Credit Limit and Average Purchase: {correlation:.2f}")
+```
+```
+Output:
+Correlation between Credit Limit and Average Purchase: -0.10
+```
 
 ---
 
-### **2️⃣ Churn vs. Monthly Charges**
+### **Step 4: Categorize Customers Based on Spending Behavior**
 ```python
-plt.figure(figsize=(8,5))
-sns.histplot(df[df["Churn"] == "Yes"]["MonthlyCharges"], kde=True, color="red", label="Churned")
-sns.histplot(df[df["Churn"] == "No"]["MonthlyCharges"], kde=True, color="green", label="Stayed")
-plt.legend()
-plt.title("Monthly Charges Distribution by Churn")
+# Divide customers into Low, Medium, and High spenders based on average purchase
+df["Spending_Category"] = pd.qcut(df["Average_Purchase"], q=3, labels=["Low", "Medium", "High"])
+
+# Display first few rows
+df.head()
+```
+```
+Output:
+
+    Customer_ID	Credit_Limit	Average_Purchase	Income	Spending_Category
+0	    1	        20795	            4127	    26102	    High
+1	    2	        5860	            1863	    70336	    Low
+2	    3	        43158	            2481	    138015	    Medium
+3	    4	        49732	            2163	    105314	    Low
+4	    5	        16284	            2029	    143007	    Low
+
+
+---
+
+### **Step 5: Outlier Detection Using Boxplot**
+```python
+# Create boxplot for average purchases
+plt.figure(figsize=(8, 5))
+sns.boxplot(x=df["Average_Purchase"])
+
+# Labels and title
+plt.xlabel("Average Purchase ($)")
+plt.title("Distribution of Average Purchases")
+
+# Show plot
 plt.show()
 ```
-
-💡 **Interpretation**:
-- Customers with **higher monthly charges** tend to churn more.  
+![alt text](image-1.png)
 
 ---
 
-### **3️⃣ Tenure vs. Churn**
+### **Step 6: Multi-Feature Analysis Using Pairplot**
 ```python
-plt.figure(figsize=(8,5))
-sns.histplot(df[df["Churn"] == "Yes"]["tenure"], kde=True, color="red", label="Churned")
-sns.histplot(df[df["Churn"] == "No"]["tenure"], kde=True, color="green", label="Stayed")
-plt.legend()
-plt.title("Tenure Distribution by Churn")
+# Create pairplot to visualize relationships across multiple features
+sns.pairplot(df, hue="Spending_Category", palette="coolwarm")
+
+# Show plot
 plt.show()
 ```
+![alt text](image-2.png)
+---
 
-💡 **Interpretation**:
-- **New customers (low tenure) churn more**.  
-- This insight can help improve customer **onboarding strategies**.  
+## **6. Analysis of Results**
+1. **Scatter Plot Interpretation**
+   - If the scatter points form an upward trend, it indicates a **positive correlation** (higher credit limits lead to higher spending).
+   - If the points are scattered randomly, it means there is **no strong correlation**.
+   - If the points form a downward trend, it suggests a **negative correlation** (higher credit limits lead to lower spending).
+
+2. **Correlation Interpretation**
+   - A **high positive value (close to 1)** suggests that customers with higher credit limits tend to spend more.
+   - A **low or zero correlation** suggests that credit limit does not significantly impact spending behavior.
+
+3. **Boxplot Insights**
+   - If there are **outliers**, it means some customers are spending much more or much less than the general trend.
+
+4. **Spending Categories**
+   - **Low spenders** may be those who are more financially cautious or have lower financial needs.
+   - **High spenders** might be customers who frequently use their credit cards for large purchases.
 
 ---
 
-### **4️⃣ Churn by Contract Type**
-```python
-plt.figure(figsize=(8,5))
-sns.countplot(x=df["Contract"], hue=df["Churn"], palette="coolwarm")
-plt.title("Churn Rate by Contract Type")
-plt.show()
-```
+## **7. Conclusion**
+- This analysis helps in understanding whether increasing a customer’s credit limit leads to higher spending.
+- Financial institutions can use these insights to optimize **credit policies** and identify **potentially risky customers** who may default on payments.
+- Further analysis can be performed by considering **credit utilization ratios, payment history, and debt-to-income ratios**.
 
-💡 **Interpretation**:
-- **Month-to-month contracts** have the highest churn.  
-- Businesses can encourage customers to **switch to annual contracts**.  
-
----
-
-## **📌 Step 5: Data Preprocessing**
-### **Convert Categorical Features to Numeric**
-We encode categorical columns using **Label Encoding**.
-
-```python
-le = LabelEncoder()
-
-for column in df.select_dtypes(include="object").columns:
-    df[column] = le.fit_transform(df[column])
-```
-
-💡 **Why?**
-- ML models cannot handle text, so we convert it to numbers.
-
----
-
-### **Feature Scaling**
-We scale **continuous variables** like `MonthlyCharges` and `TotalCharges`.
-
-```python
-scaler = StandardScaler()
-df[["MonthlyCharges", "TotalCharges"]] = scaler.fit_transform(df[["MonthlyCharges", "TotalCharges"]])
-```
-
----
-
-## **📌 Step 6: Train-Test Split**
-We split data into **80% training** and **20% testing**.
-
-```python
-# Define features and target
-X = df.drop(columns=["Churn"])
-y = df["Churn"]
-
-# Train-test split
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
-```
-
-💡 **Stratified Sampling** ensures the same churn ratio in train & test sets.
-
----
-
-## **📌 Step 7: Train Machine Learning Model**
-We use a **Random Forest Classifier**.
-
-```python
-# Train model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-
-# Make predictions
-y_pred = model.predict(X_test)
-```
-
----
-
-## **📌 Step 8: Model Evaluation**
-### **1️⃣ Confusion Matrix**
-```python
-# Compute confusion matrix
-conf_matrix = confusion_matrix(y_test, y_pred)
-
-# Plot confusion matrix
-plt.figure(figsize=(5,4))
-sns.heatmap(conf_matrix, annot=True, fmt="d", cmap="Blues", xticklabels=["Stayed", "Churned"], yticklabels=["Stayed", "Churned"])
-plt.xlabel("Predicted")
-plt.ylabel("Actual")
-plt.title("Confusion Matrix")
-plt.show()
-```
-
-💡 **Interpretation**:
-- **True Positives (TP)** → Correctly predicted churned customers.  
-- **False Negatives (FN)** → Churned customers predicted as stayed (bad for business!).  
-
----
-
-### **2️⃣ Precision, Recall, F1-score**
-```python
-print(classification_report(y_test, y_pred))
-```
-
-💡 **Key Metrics**:
-- **Precision** → Correct churn predictions.  
-- **Recall** → How many actual churns did we capture?  
-
----
-
-### **3️⃣ Accuracy Score**
-```python
-accuracy = accuracy_score(y_test, y_pred)
-print(f"Model Accuracy: {accuracy:.2f}")
-```
-
----
-
-## **📌 Step 9: Handling Imbalanced Data**
-Since churn is rare, we apply **SMOTE (Synthetic Minority Over-sampling Technique).**
-
-```python
-from imblearn.over_sampling import SMOTE  
-
-smote = SMOTE(random_state=42)
-X_resampled, y_resampled = smote.fit_resample(X_train, y_train)
-
-print(f"Before SMOTE: {len(X_train)}")
-print(f"After SMOTE: {len(X_resampled)}")
-```
-
----
-
-## **📌 Step 10: Re-train the Model on Balanced Data**
-```python
-# Train on SMOTE data
-model_smote = RandomForestClassifier(n_estimators=100, random_state=42)
-model_smote.fit(X_resampled, y_resampled)
-
-# Predict and evaluate
-y_pred_smote = model_smote.predict(X_test)
-print(classification_report(y_test, y_pred_smote))
-```
-
----
-
-## **📌 Step 11: Feature Importance Analysis**
-```python
-importances = model.feature_importances_
-feature_df = pd.DataFrame({"Feature": X.columns, "Importance": importances}).sort_values(by="Importance", ascending=False)
-
-plt.figure(figsize=(10,5))
-sns.barplot(x=feature_df["Importance"], y=feature_df["Feature"], palette="coolwarm")
-plt.xlabel("Feature Importance")
-plt.ylabel("Feature Name")
-plt.title("Top Features Influencing Churn")
-plt.show()
-```
-
-💡 **Key Insights**:
-- **Tenure, MonthlyCharges, and Contract Type** play the biggest role in churn.  
-
----
-
-## **🚀 Conclusion**
-✅ **Key Takeaways**:
-- Customers with **high monthly charges** churn more.  
-- **New customers** are at higher risk of churn.  
-- **Long-term contracts reduce churn**.  
-
-🚀 **Next Steps**:
-- Deploy the model for **real-time churn prediction**.  
-- Use **Deep Learning (LSTMs) for better predictions**.  
-
-Would you like me to **implement a deep learning approach**? 🚀
