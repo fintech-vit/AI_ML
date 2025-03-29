@@ -1,4 +1,3 @@
-Here's an improved Markdown file with more **graphs and explanations** to make it **self-explanatory** for students. It includes detailed **visualizations using Matplotlib and Seaborn** to help understand the dataset better.  
 
 ---
 
@@ -194,35 +193,11 @@ print("Random Forest Accuracy:", accuracy_score(y_test, y_pred_rf))
 
 ---
 
-## **Step 7: Deploying the Model**  
-We can **deploy this model as an API** using **Flask**.  
-
-```python
-from flask import Flask, request, jsonify  
-import pickle  
-
-app = Flask(__name__)  
-
-# Load trained model  
-model = pickle.load(open('churn_model.pkl', 'rb'))  
-
-@app.route('/predict', methods=['POST'])  
-def predict():  
-    data = request.json  
-    prediction = model.predict([data['features']])  
-    return jsonify({'churn_prediction': int(prediction[0])})  
-
-if __name__ == '__main__':  
-    app.run(debug=True)
-```
-
----
-
 ## **Conclusion**  
 We successfully built a **Customer Churn Prediction Model** using **machine learning**. Key takeaways:  
-✅ Customers with **higher monthly charges are more likely to churn**.  
-✅ **Shorter tenure increases churn risk**.  
-✅ Machine learning helps businesses **reduce churn & improve customer retention**.  
+Customers with **higher monthly charges are more likely to churn**.  
+**Shorter tenure increases churn risk**.  
+Machine learning helps businesses **reduce churn & improve customer retention**.  
 
 ---
 
