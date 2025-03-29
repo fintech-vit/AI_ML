@@ -1,4 +1,4 @@
-# **Understanding the Relationship Between Credit Limit and Average Purchase**
+# **Create a bivariate plot to find if there is a correlation between credit card limit and average purchase made on the card**
 - https://colab.research.google.com/drive/1PZQytSNf2r3DZiz5LCDg3_G1HODT9PS2?usp=sharing
 
 ## **1. Introduction**
